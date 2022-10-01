@@ -16,38 +16,38 @@ function print_game_table()
   end
 end
 
-function someone_won()
+function someone_won(tris_board)
   -- orizzontali
-  if (game_table[1][1] == game_table[1][2] and game_table[1][1] == game_table[1][3] and game_table[1][3] ~= "-") then
-    return true
+  if (tris_board[1][1] == tris_board[1][2] and tris_board[1][1] == tris_board[1][3] and tris_board[1][3] ~= "-") then
+    return tris_board[1][1]
   end
-  if (game_table[2][1] == game_table[2][2] and game_table[2][1] == game_table[2][3] and game_table[2][3] ~= "-") then
-    return true
+  if (tris_board[2][1] == tris_board[2][2] and tris_board[2][1] == tris_board[2][3] and tris_board[2][3] ~= "-") then
+    return tris_board[2][1]
   end
-  if (game_table[3][1] == game_table[3][2] and game_table[3][1] == game_table[3][3] and game_table[3][3] ~= "-") then
-    return true
+  if (tris_board[3][1] == tris_board[3][2] and tris_board[3][1] == tris_board[3][3] and tris_board[3][3] ~= "-") then
+    return tris_board[3][1]
   end
   
   -- verticali
-  if (game_table[1][1] == game_table[2][1] and game_table[1][1] == game_table[3][1] and game_table[1][1] ~= "-") then
-    return true
+  if (tris_board[1][1] == tris_board[2][1] and tris_board[1][1] == tris_board[3][1] and tris_board[1][1] ~= "-") then
+    return tris_board[1][1]
   end
-  if (game_table[1][2] == game_table[2][2] and game_table[1][2] == game_table[3][2] and game_table[1][2] ~= "-") then
-    return true
+  if (tris_board[1][2] == tris_board[2][2] and tris_board[1][2] == tris_board[3][2] and tris_board[1][2] ~= "-") then
+    return tris_board[1][2]
   end
-  if (game_table[1][3] == game_table[2][3] and game_table[1][3] == game_table[3][3] and game_table[1][3] ~= "-") then
-    return true
+  if (tris_board[1][3] == tris_board[2][3] and tris_board[1][3] == tris_board[3][3] and tris_board[1][3] ~= "-") then
+    return tris_board[1][3]
   end
   
   -- obliqui
-  if (game_table[1][1] == game_table[2][2] and game_table[1][1] == game_table[3][3] and game_table[2][2] ~= "-") then
-    return true
+  if (tris_board[1][1] == tris_board[2][2] and tris_board[1][1] == tris_board[3][3] and tris_board[2][2] ~= "-") then
+    return tris_board[1][1]
   end
-  if (game_table[1][3] == game_table[2][2] and game_table[2][2] == game_table[3][1] and game_table[2][2] ~= "-") then
-    return true
+  if (tris_board[1][3] == tris_board[2][2] and tris_board[2][2] == tris_board[3][1] and tris_board[2][2] ~= "-") then
+    return tris_board[2][2]
   end
   
-  return false
+  return ""
 
 end
 
@@ -73,9 +73,9 @@ function cell_pressed(mapargs)
   end
   
   -- check if someone has won
-  if (someone_won()) then
+  if (someone_won(game_table) ~= "") then
     -- TODO: implement winning
-    print("we have a winner!!!")
+    print("we have a winner!!!" .. someone_won(game_table).."")
   end
   
   turno = not(turno)
@@ -88,9 +88,9 @@ function cell_pressed(mapargs)
     game_table[ai_row][ai_col] = "O"
   
   -- check if someone has won
-  if (someone_won()) then
+  if (someone_won(game_table) ~= "") then
     -- TODO: implement winning
-    print("we have a winner!!!")
+    print("we have a winner!!!" .. someone_won(game_table).."")
   end
   
   turno = not(turno)

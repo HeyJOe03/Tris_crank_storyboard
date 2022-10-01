@@ -47,13 +47,81 @@ function someone_won(tris_board)
     return tris_board[2][2]
   end
   
-  return ""
+  for i = 1,3 do
+    for g = 1,3 do
+      if(tris_board[i][g] == "-") then return "" end
+    end
+  end
+  return "tie"
 
 end
 
 
-function AI()
-  return 1,1
+function minimax(tris_board, depth, isAIgo)
+  if(someone_won(tris_board) == "O") then
+    return 1
+  end
+  if(someone_won(tris_board) == "X") then
+    return -1
+  end
+  if(someone_won(tris_board) == "tie") then
+    return 0
+  end
+  
+  if(isAIgo) then
+    local best_score = -100
+    for i = 1,3 do -- maximizing process
+      for g = 1,3 do
+        -- impossible negative value
+        if(tris_board[i][g] == "-") then
+          tris_board[i][g] = "O"
+          local score = minimax(tris_board, depth + 1, false)
+          tris_board[i][g] = "-"
+          best_score = math.max(score,best_score)
+        end
+      end
+    end
+    return best_score
+    
+  else -- minimazing function
+    local lower_score = 100
+    for i = 1,3 do -- maximizing process
+      for g = 1,3 do
+        -- impossible negative value
+        if(tris_board[i][g] == "-") then
+          tris_board[i][g] = "X"
+          local score = minimax(tris_board, depth + 1, true)
+          tris_board[i][g] = "-"
+          lower_score = math.min(score,lower_score)
+        end
+      end
+    end
+    return lower_score
+  end
+   
+  
+end
+
+
+function AI(tris_board)
+  local best_score = -1000
+  local move_x = 0
+  local move_y = 0
+  for i = 1,3 do
+    for g = 1,3 do
+      if(tris_board[i][g] == "-") then
+        tris_board[i][g] = "O"
+        local score = minimax(tris_board, 0, false)
+        tris_board[i][g] = "-"
+        if (score > best_score) then 
+          best_score = score
+          move_x = i
+          move_y = g
+        end
+      end
+    end
+  end
+  return move_x, move_y
 end
 
 
@@ -81,7 +149,7 @@ function cell_pressed(mapargs)
   turno = not(turno)
   
   -- computer move
-  local ai_row, ai_col = AI()
+  local ai_row, ai_col = AI(game_table)
   
   -- computer cell set
   gre.set_value("clickable_areas.cell"..ai_row.."_"..ai_col..".image", "images/O.png")

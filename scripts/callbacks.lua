@@ -56,7 +56,7 @@ function someone_won(tris_board)
 
 end
 
-
+----------------- AI SECTION --------------
 function minimax(tris_board, depth, isAIgo)
   if(someone_won(tris_board) == "O") then
     return 1
@@ -102,7 +102,6 @@ function minimax(tris_board, depth, isAIgo)
   
 end
 
-
 function AI(tris_board)
   local best_score = -1000
   local move_x = 0
@@ -124,7 +123,7 @@ function AI(tris_board)
   return move_x, move_y
 end
 
-
+-------------------------------------------
 
 --- @param gre#context mapargs
 function cell_pressed(mapargs)
@@ -144,9 +143,8 @@ function cell_pressed(mapargs)
   if (someone_won(game_table) ~= "") then
     -- TODO: implement winning
     print("we have a winner!!!" .. someone_won(game_table).."")
+    return
   end
-  
-  turno = not(turno)
   
   -- computer move
   local ai_row, ai_col = AI(game_table)
@@ -159,8 +157,6 @@ function cell_pressed(mapargs)
   if (someone_won(game_table) ~= "") then
     -- TODO: implement winning
     print("we have a winner!!!" .. someone_won(game_table).."")
-  end
-  
-  turno = not(turno)
-  
+    return
+  end  
 end

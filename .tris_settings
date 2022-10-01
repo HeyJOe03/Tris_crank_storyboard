@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="root">
+	<item key="pref.editor_zoom" value="1.0"/>
+	<item key="pref.default_layer_name" value="clickable_areas"/>
+	<item key="pref.default_table_name" value="areas_table"/>
+	<section name="workingsets">
+		<section name="">
+			<item key="includeDesignStates" value="true"/>
+			<list key="elements">
+				<item value="Screen"/>
+			</list>
+			<section name="Screen">
+			</section>
+		</section>
+	</section>
+</section>

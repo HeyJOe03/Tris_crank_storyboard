@@ -158,6 +158,7 @@ function cell_pressed(mapargs)
 end
 
 
-function on_load(mapargs)
+function start_function(mapargs)
   print("hello world")
+  print(gre.get_value("buttons.AI_player_switch.player_start"))
 end

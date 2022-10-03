@@ -4,8 +4,24 @@
     <label>exit_anim animation complete</label>
     <description>The animation named exit_anim has completed</description>
   </event>
+  <event name="gre.animate.complete.SBCSwitchToggleOff" type="0x8">
+    <label>SBCSwitchToggleOff animation complete</label>
+    <description>The animation named SBCSwitchToggleOff has completed</description>
+  </event>
+  <event name="gre.animate.complete.SBCSwitchToggleOn" type="0x8">
+    <label>SBCSwitchToggleOn animation complete</label>
+    <description>The animation named SBCSwitchToggleOn has completed</description>
+  </event>
   <event name="gre.animate.stop.exit_anim" type="0x8">
     <label>exit_anim animation stopped</label>
     <description>The animation named exit_anim has been stopped</description>
+  </event>
+  <event name="gre.animate.stop.SBCSwitchToggleOff" type="0x8">
+    <label>SBCSwitchToggleOff animation stopped</label>
+    <description>The animation named SBCSwitchToggleOff has been stopped</description>
+  </event>
+  <event name="gre.animate.stop.SBCSwitchToggleOn" type="0x8">
+    <label>SBCSwitchToggleOn animation stopped</label>
+    <description>The animation named SBCSwitchToggleOn has been stopped</description>
   </event>
 </eventdefinitions>

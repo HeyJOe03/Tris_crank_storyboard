@@ -6,7 +6,7 @@
 	<item key="pref.default_screen_name" value="open_screen"/>
 	<item key="pref.default_fps" value="30"/>
 	<item key="anim-play_exit" value=""/>
-	<item key="anim-exit_anim" value="${app:buttons.Control.grd_y}"/>
+	<item key="anim-exit_anim" value="${app:buttons.play_button.grd_y}&#x0A;${app:buttons.AI_player_switch.grd_y}&#x0A;${app:buttons.sign_player_start.grd_x}&#x0A;${app:buttons.TextField.textField.grd_x}"/>
 	<section name="workingsets">
 		<section name="">
 			<item key="includeDesignStates" value="true"/>

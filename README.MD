@@ -11,3 +11,6 @@ la AI è stata implementata sfruttando l'argoritmo __minimax__
 [algoritmo minimax applicato per il tris in js](https://www.youtube.com/watch?v=trKjYdBASyQ&t=917s)
 
 [minimax functon](https://www.youtube.com/watch?v=l-hh51ncgDI&t=193s)
+
+
+author: __Carminati Giovanni__

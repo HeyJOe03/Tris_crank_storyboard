@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="root">
 	<item key="pref.editor_zoom" value="1.0"/>
-	<item key="pref.default_layer_name" value="clickable_areas"/>
+	<item key="pref.default_layer_name" value="buttons"/>
 	<item key="pref.default_table_name" value="areas_table"/>
+	<item key="pref.default_screen_name" value="open_screen"/>
+	<item key="pref.default_fps" value="30"/>
+	<item key="anim-play_exit" value=""/>
+	<item key="anim-exit_anim" value="${app:buttons.Control.grd_y}"/>
 	<section name="workingsets">
 		<section name="">
 			<item key="includeDesignStates" value="true"/>
 			<list key="elements">
-				<item value="Screen"/>
+				<item value="game_screen"/>
+				<item value="start_screen"/>
+				<item value="start_screen"/>
 			</list>
-			<section name="Screen">
+			<section name="game_screen">
+			</section>
+			<section name="start_screen">
 			</section>
 		</section>
 	</section>

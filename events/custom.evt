@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<eventdefinitions>
+  <event name="gre.animate.complete.exit_anim" type="0x8">
+    <label>exit_anim animation complete</label>
+    <description>The animation named exit_anim has completed</description>
+  </event>
+  <event name="gre.animate.stop.exit_anim" type="0x8">
+    <label>exit_anim animation stopped</label>
+    <description>The animation named exit_anim has been stopped</description>
+  </event>
+</eventdefinitions>

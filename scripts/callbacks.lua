@@ -1,8 +1,4 @@
 
-
-
-local turno = true
-
 local game_table = { {"-","-","-"},{"-","-","-"},{"-","-","-"} }
 
 function print_game_table()
@@ -159,4 +155,9 @@ function cell_pressed(mapargs)
     print("we have a winner!!!" .. someone_won(game_table).."")
     return
   end  
+end
+
+
+function on_load(mapargs)
+  print("hello world")
 end

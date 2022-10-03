@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="root">
 	<item key="pref.editor_zoom" value="1.0"/>
-	<item key="pref.default_layer_name" value="buttons"/>
+	<item key="pref.default_layer_name" value="game_end"/>
 	<item key="pref.default_table_name" value="areas_table"/>
 	<item key="pref.default_screen_name" value="open_screen"/>
 	<item key="pref.default_fps" value="30"/>

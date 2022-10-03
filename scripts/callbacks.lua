@@ -1,6 +1,7 @@
 
 local game_table = { {"-","-","-"},{"-","-","-"},{"-","-","-"} }
 
+-- debug function
 function print_game_table()
   local line = ""
   for i = 1,3 do
@@ -12,6 +13,9 @@ function print_game_table()
   end
 end
 
+-- check if someone won the game
+-- returns: 
+-- "X", "O", "tie"
 function someone_won(tris_board)
   -- orizzontali
   if (tris_board[1][1] == tris_board[1][2] and tris_board[1][1] == tris_board[1][3] and tris_board[1][3] ~= "-") then
@@ -121,7 +125,7 @@ end
 
 -------------------------------------------
 
---- @param gre#context mapargs
+-- when a cell is pressed
 function cell_pressed(mapargs)
   local row = tonumber(mapargs.row)
   local col = tonumber(mapargs.col)
@@ -137,8 +141,7 @@ function cell_pressed(mapargs)
   
   -- check if someone has won
   if (someone_won(game_table) ~= "") then
-    -- TODO: implement winning
-    print("we have a winner!!!" .. someone_won(game_table).."")
+    on_winner( someone_won(game_table))
     return
   end
   
@@ -151,14 +154,64 @@ function cell_pressed(mapargs)
   
   -- check if someone has won
   if (someone_won(game_table) ~= "") then
-    -- TODO: implement winning
-    print("we have a winner!!!" .. someone_won(game_table).."")
+    on_winner( someone_won(game_table))
     return
   end  
 end
 
 
-function start_function(mapargs)
-  print("hello world")
-  print(gre.get_value("buttons.AI_player_switch.player_start"))
+function tobool(value)
+  if (value == 1) then return true
+  else return false end
 end
+
+local ai_starts = false
+
+-- when switch is selected
+function start_function(mapargs)
+  ai_starts = tobool(gre.get_value("buttons.AI_player_switch.player_start"))
+end
+
+-- starts when AI must perform first move
+function game_onload(mapargs)
+  if(ai_starts) then
+  print("calculating")
+    local ai_row, ai_col = AI(game_table)
+  
+  -- computer cell set
+    gre.set_value("clickable_areas.cell"..ai_row.."_"..ai_col..".image", "images/O.png")
+    game_table[ai_row][ai_col] = "O"
+  end
+end
+ 
+ 
+-- animation if someone wins
+function on_winner(winner)
+  gre.set_value("game_end.replay_btn.grd_x", 50)
+
+  local comp = "game_end.end_image.image"
+  gre.set_value("game_end.end_image.grd_x", 50)
+  if(winner == "X") then -- tanto è impossibile vincere ahahha
+    gre.set_value(comp, "images/win.jpg")
+  elseif (winner == "O") then
+    gre.set_value(comp, "images/evil pc.png")
+  else -- tie
+    gre.set_value(comp, "images/29082018_braccio-di-ferro_03.jpg")  
+  end
+end
+
+function restart(mapargs)
+  gre.set_value("game_end.replay_btn.grd_x", 400)
+  gre.set_value("game_end.end_image.grd_x", 400)
+  
+  for i=1,3 do
+    for g=1,3 do
+      game_table[i][g] = "-"
+      gre.set_value("clickable_areas.cell"..i.."_"..g..".image", "")
+    end
+  end
+  
+  game_onload()
+
+end
+ 
